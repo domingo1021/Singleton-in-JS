@@ -1,9 +1,11 @@
 const mysql = (function () {
-  let pool;
+  let pool = null;
 
   function createPool(config){
-    config.maxConnection;
-    pool = Pool(config.maxConnection);
+    if(pool === null){
+      config.maxConnection;
+      pool = Pool(config.maxConnection);
+    }
     return pool;
   }
   

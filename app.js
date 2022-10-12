@@ -21,4 +21,10 @@ console.log(pool.getConnection());
 console.log(pool.getConnection());
 console.log(pool.getConnection());
 console.log(pool.getConnection());
+
+// check if mysql createPool is Singleton.
+const pool2 = mysql.createPool(config);
+console.log(`Check if pool is Singleton: ${pool === pool2}`);
+
+// Exception when connection exceed max num.
 console.log(pool.getConnection());
