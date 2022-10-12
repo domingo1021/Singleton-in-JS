@@ -1,9 +1,19 @@
+// For CJS, require pool connection at first.
+const { Pool } = require('./pool_connection');
+
+console.log('---lazy singleton----')
+console.time();
 const mysql = require('./lazy_mysql');
-// const mysql = require('./active_mysql');
+console.timeEnd();
 
 const config = { maxConnection: 5 };
 
+
+console.log('---lazy singleton create pool----')
+console.time();
 const pool = mysql.createPool(config);
+console.timeEnd()
+
 console.log("Pool query: ",pool.query('SELECT * FROM user WHERE user_id = ? AND email = ?;', [1, "domingo@gamil.com"]))
 
 // get first connection, and release.
